@@ -1,0 +1,12 @@
+@charset 'utf-8';
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+$family-sans-serif: "Open Sans", sans-serif;
+$primary: #8c67ef;
+$primary-light: findLightColor($primary);
+$radius: 0;
+$radius-large: 0;
+
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
