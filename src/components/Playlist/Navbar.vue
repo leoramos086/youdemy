@@ -18,7 +18,7 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
-    <div class="navbar-divider" />
+    <div class="navbar-divider-vertical" />
     <div class="navbar-menu" :class="{ 'is-active': isActiveMobileMenu }">
       <div class="navbar-start">
         <div class="navbar-item">Curso de Vue JS</div>
@@ -50,12 +50,13 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-.navbar-divider {
+<style lang="scss" scoped>
+.navbar-divider-vertical {
   align-self: center;
   width: 1px;
-  height: 25px;
+  height: 1.5rem;
   margin: 0 5px;
-  background-color: $grey-light;
+  background-color: $grey;
+  
 }
 </style>
