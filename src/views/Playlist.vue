@@ -11,6 +11,10 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useRoute } from "vue-router";
+
+import { getPlaylist } from "@/hooks/useYoutubeApi";
+
 import Navbar from "@/components/Playlist/Navbar.vue";
 import Sidebar from "@/components/Playlist/Sidebar.vue";
 import Video from "@/components/Playlist/Video.vue";
@@ -22,8 +26,14 @@ export default defineComponent({
     Sidebar,
     Video,
   },
-  setup() {
+  async setup() {
     const toggleSidebar = ref(false);
+
+    const {
+      params: { playlistID },
+    } = useRoute();
+
+    console.log(await getPlaylist(playlistID as string));
 
     return {
       toggleSidebar,
