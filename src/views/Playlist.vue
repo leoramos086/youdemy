@@ -4,16 +4,16 @@
   <div class="playlist-container" :class="{ 'with-sidebar': toggleSidebar }">
     <Video />
   </div>
-  <!-- <div id="Playlist">
+  <div id="Playlist">
     <h1>Estou na Playlist</h1>
-  </div> -->
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { useRoute } from "vue-router";
 
-import { getPlaylist } from "@/hooks/useYoutubeApi";
+import { playlist } from "@/hooks/useYoutubeApi";
 
 import Navbar from "@/components/Playlist/Navbar.vue";
 import Sidebar from "@/components/Playlist/Sidebar.vue";
@@ -26,14 +26,23 @@ export default defineComponent({
     Sidebar,
     Video,
   },
-  async setup() {
-    const toggleSidebar = ref(false);
+  setup() {
+    const toggleSidebar = ref(true);
 
     const {
       params: { playlistID },
     } = useRoute();
 
-    console.log(await getPlaylist(playlistID as string));
+    // console.log(playlistID);
+
+    playlist(playlistID as string).then((data) => {
+      if (!data) {
+        return alert(
+          "Erro ao procurar dados da Playlist no youtube, Tem certeza que essa playlist Existe?"
+        );
+      }
+      console.log(data)
+    });
 
     return {
       toggleSidebar,
